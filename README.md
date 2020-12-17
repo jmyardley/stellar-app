@@ -1,1 +1,1 @@
-# stellar-app
+# Stellar App
