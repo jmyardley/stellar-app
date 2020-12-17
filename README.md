@@ -1,1 +1,7 @@
-# stellar-app
+# Stellar App
+
+Latisha
+Kayla
+Zoreah
+James
+Omar
