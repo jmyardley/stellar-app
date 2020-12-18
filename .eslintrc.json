@@ -28,7 +28,7 @@
     "no-multi-spaces": "error",
     "no-unreachable": "error",
     "no-unused-vars": "error",
-    "no-var": "error",
+    "no-var": "off",
     "prefer-arrow-callback": "error",
     "prefer-const": "error",
     "prettier/prettier": "error",
