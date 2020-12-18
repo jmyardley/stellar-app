@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
     },
 
     time: {
-      type: Sequelize.TIME,
+      type: DataTypes.TIME,
       allowNull: false,
       unique: true
     }
