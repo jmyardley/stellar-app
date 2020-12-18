@@ -1,4 +1,16 @@
+
+
+
 form.signup,
 form.login {
   margin-top: 50px;
+}
+.h2{
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 28px;
+}
+
+.form-control{
+  font-family: 'Average', serif;
+  font-size: 20px;
 }
