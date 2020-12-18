@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   const Appointment = sequelize.define("Appointment", {
-    name: {
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -19,12 +19,6 @@ module.exports = function(sequelize, DataTypes) {
     date: {
       type: DataTypes.DATE,
       allowNull: false
-    },
-
-    time: {
-      type: Sequelize.TIME,
-      allowNull: false,
-      unique: true
     }
   });
   return Appointment;
