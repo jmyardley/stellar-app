@@ -29,7 +29,6 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
-
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
@@ -49,5 +48,54 @@ module.exports = function(app) {
         id: req.user.id
       });
     }
+  });
+
+  //route for getting form appointment.js//
+  app.get("/api/appointment", (req, res) => {
+    db.Appointment.findAll({}).then(dbAppointment => {
+      res.json(dbAppointment);
+    });
+  });
+
+  app.post("/api/appointment", (req, res) => {
+    db.Appointment.create({
+      text: req.body.text,
+      complete: req.body.complete
+    })
+      .then(dbAppointment => {
+        res.json(dbAppointment);
+      })
+      .catch(err => {
+        res.json(err);
+      });
+  });
+
+  app.delete("/api/appointment/:id", (req, res) => {
+    db.Appointment.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(dbAppointment => {
+      res.json(dbAppointment);
+    });
+  });
+  app.put("/api/todos", (req, res) => {
+    db.Appointment.update(
+      {
+        text: req.body.text,
+        complete: req.body.complete
+      },
+      {
+        where: {
+          id: req.body.id
+        }
+      }
+    )
+      .then(dbAppointment => {
+        res.json(dbAppointment);
+      })
+      .catch(err => {
+        res.json(err);
+      });
   });
 };
