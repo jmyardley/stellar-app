@@ -2,7 +2,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -58,16 +58,20 @@ module.exports = function(app) {
   });
 
   app.post("/api/appointment", (req, res) => {
-    db.Appointment.create({
-      text: req.body.text,
-      complete: req.body.complete
-    })
-      .then(dbAppointment => {
-        res.json(dbAppointment);
+    if (req.user) {
+      db.Appointment.create({
+        date: req.body.date,
+        UserId: req.user.id
       })
-      .catch(err => {
-        res.json(err);
-      });
+        .then(dbAppointment => {
+          res.json(dbAppointment);
+        })
+        .catch(err => {
+          res.json(err);
+        });
+    } else {
+      res.sendStatus(500);
+    }
   });
 
   app.delete("/api/appointment/:id", (req, res) => {
