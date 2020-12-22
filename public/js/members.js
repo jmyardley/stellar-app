@@ -6,11 +6,12 @@ $(document).ready(function() {
     $(".member-name").text(data.email);
   });
   const calendarEl = document.querySelector("#calendar");
+  const confirmEl = document.querySelector("#confirmation");
   const calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: "dayGridMonth",
     dateClick: function(info) {
       const newDate = info.dateStr;
-      alert("Selected " + newDate);
+      // alert("Selected " + newDate);
       info.dayEl.style.backgroundColor = "gray";
       console.log(newDate);
       // jquery post to /api/appointment sent text complete date userID
@@ -23,6 +24,8 @@ $(document).ready(function() {
         .catch(err => {
           console.log(err);
         });
+      confirmEl.innerHTML = "You have selected " + newDate;
+      confirmEl.innerHTML += " Back".link("");
     }
   });
   calendar.render();
